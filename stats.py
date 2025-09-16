@@ -1,7 +1,10 @@
+def sort_on(items):
+    return items["num"]
+
 def get_num_words(text):
     return len(text.split())
 
-def get_num_characters(text):
+def get_character_count(text):
     text = text.lower()
     dictionary = {}
 
@@ -13,5 +16,19 @@ def get_num_characters(text):
 
     return dictionary
 
+def get_sorted_character_count(dictionary):
+    sorted_list = []
+
+    for element in dictionary:
+        sorted_list.append({
+            "char": element,
+            "num" : dictionary[element]
+        })
+
+    sorted_list.sort(reverse=True, key=sort_on)
+
+    return sorted_list
+
 if __name__ == "__main__":
-    print(get_num_characters("Hello my friend! I am counting characters."))
+    dictionary = get_character_count("Hello my friend! I am counting characters.")
+    print(get_sorted_character_count(dictionary))
